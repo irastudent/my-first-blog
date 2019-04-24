@@ -25,7 +25,7 @@ SECRET_KEY = '4n2y=gd^**(*6y1o1u0y^4x9#$(&_mb6_e$p!^e$$i7(qla3hr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['irastudent.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
