@@ -1,40 +1,13 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-        </div>
-        {% for post in posts %}
-    <div>
-        <p>published: {{ 08.05.2019 }}</p>
-        <h1><a href="">{{ My first post }}</a></h1>
-        <p>{{ Шаблон - це файл, який ми можемо повторно використовувати
-             для представлення різноманітної інформації в послідовному
-              форматі. Наприклад, ви можете використовувати шаблон для
-               допомоги у написанні листа, бо, хоча кожен лист може
-                містити різне повідомлення та бути адресованим різним
-                 особам, усі листи поширюватимуться у однаковому форматі. }}</p>
-    </div>
-    <div>
-            <p>published: 08.05.2019, 09:20</p>
-            <h2><a href="">My second post</a></h2>
-            <p>URL (англ. Uniform Resource Locator — єдиний вказівник на ресурс, URL)
-             - це просто веб-адреса. Відображається URL кожен раз,
-             коли ви відвідуєте веб-сайт - це видно в адресному рядку
-              браузера.</p>
-        </div>
-    <div>
-         <p>published: 08.05.2019, 09:20</p>
-            <h2><a href="">My third post</a></h2>
-            <p>Каскадні таблиці стилів (англ. Cascading Style Sheets,
-             скорочено CSS) - спеціальна мова, що використовується для
-              опису зовнішнього вигляду і форматування сайту написаного
-               мовою розмітки (як HTML). Сприймайте це, як свого роду
-                макіяж для нашої веб-сторінки;).</p>
-        </div>
-{% endfor %}
+{% extends 'blog/base.html' %}
 
-    </body>
-</html>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
